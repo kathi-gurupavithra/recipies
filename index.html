@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        p,h2,input,form{
+          text-align: center;
+          font-size: Larger;
+        }
+       body{
+        
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  background-color:lavender;
+       }
+        #afterexe{
+            display:none;
+        }
+        button{
+         border-radius: 20px;
+        }
+        .image-text {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px; /* Space between image and text */
+        }
+        img {
+            width: 50px; /* Adjust image size */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    
+    <h1 style="background-color: cadetblue;font-size: auto;text-align: center;background-image: linear-gradient(to right,yellow,purple);">Customise recipie<span> <div class="image-text">
+        <img src="recipie.jpg" alt="Image">
+    </div></span></h1>
+    <form id="formid">
+        <p style="color:red; background-image: linear-gradient(to left,yellow,lavender);">Select vegetables</p>
+        <input type="checkbox" id="brinjal" name="vegetable" class="veg" value="Brinjal" >
+        <label for="brinjal">Brinjal</label><br>
+        <input type="checkbox" id="cuc" name="vegetable" class="veg" value="Cucumber">
+        <label for="cuc">Cucumber</label><br>
+        <input type="checkbox" id="lady" name="vegetable" class="veg" value="Ladies Finger">
+        <label for="lady">Ladies finger</label><br>
+        <input type="checkbox" id="potato" name="vegetable" class="veg" value="Potato">
+        <label for="potato">Potato</label><br>
+        <input type="checkbox" id="flower" name="vegetable" class="veg" value="Cauliflower">
+        <label for="flower">Cauliflower</label><br>
+        <input type="checkbox" id="ash" name="vegetable" class="veg" value="Ash Gaurd">
+        <label for="ash">Ash Guard</label><br>
+        <button type="button" onclick="checkboxArray()">Submit</button>
+    </form>
+  
+    <form id="oil">
+        <p style="color: red;background-image: linear-gradient(to left,yellow,lavender);">Select oil </p>
+    <input type="radio" id="coco" class="fav" value="Coconut Oil">
+  <label for="coc">Coconut Oil</label><br>
+  <input type="radio" id="palm" class="fav" value="Palmoleon oil">
+  <label for="paml">Palmoleon oil</label><br>
+  <input type="radio" id="sun" class="fav" value="Sunflower oil">
+  <label for="sun">Sunflower oil</label><br>
+<button type="button" onclick="oilSelection()">Select Oil</button>
+
+    </form>
+    <div id="afterexe">
+    <h2 style="background-color: cadetblue;background-image: linear-gradient(to right,green,orange);">The recipie</h2>
+    <p>step 1:Add <span id="myoil"></span></p>
+    <p>Add Mustard seeds and curry leaves</p>
+    <p>add onion,wait for 5 minutes for deepfry then its time for tomato</p>
+    <p>Add <span id="selectveg"></span></p>
+    <p>Let them deep fry till it get soft</p>
+    <p>Add Chilli powder and salt required </p>
+    <p>after 15min on low sim delicious andhra food is ready</p>
+</div>
+    <script>
+        alert("welcome : )");
+     const f=document.getElementById("formid");
+    const data=f.getElementsByClassName("veg");
+    console.log(data);
+    const veggies=[];
+    const unpush=[];
+    function checkboxArray(){
+   for(let i=0;i<data.length;i++){
+    if(data[i].checked){
+        veggies.push(data[i].value)
+    }
+    
+   }
+   const veggiesString = veggies.join(', ');
+            const unpushString = unpush.join(', ');
+
+            // Log results to the console
+            console.log("Selected vegetables: " + veggiesString);
+            console.log("Unselected vegetables: " + unpushString);
+
+
+document.getElementById("selectveg").textContent=veggiesString;
+if (document.getElementById("myoil").textContent) {
+                document.getElementById("afterexe").style.display = "block";
+            }
+}
+let pushedele=checkboxArray();
+var oil=document.getElementById("oil");
+var seloil=oil.getElementsByClassName("fav");
+console.log(oil);
+console.log("list of oils",seloil);
+var usedoil="";
+function oilSelection(){
+for(let j=0;j<seloil.length;j++){
+    if(seloil[j].checked){
+        usedoil=seloil[j].value;
+    }   
+}
+document.getElementById("myoil").textContent=usedoil;
+if (document.getElementById("selectveg").textContent) {
+                document.getElementById("afterexe").style.display = "block";
+            }
+}
+var oilselect=oilselected();
+    </script>
+</body>
+</html>
